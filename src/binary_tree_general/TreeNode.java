@@ -10,8 +10,8 @@ import java.util.Queue;
  */
 
 public class TreeNode {
-    int val;
-    TreeNode left, right;
+    public int val;
+    public TreeNode left, right;
 
     public TreeNode() {}
 
@@ -81,5 +81,14 @@ public class TreeNode {
         }
 
         return root;
+    }
+
+    public static TreeNode search(TreeNode root, int val) {
+        if (root == null || root.val == val) {
+            return root;
+        }
+        TreeNode left = search(root.left, val);
+        TreeNode right = search(root.right, val);
+        return left == null ? right : left;
     }
 }
